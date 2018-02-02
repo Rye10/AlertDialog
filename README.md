@@ -32,4 +32,20 @@ ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this,android.
                         textView.setTextColor(Color.WHITE);<br>
                         return view1;<br>
                     }<br>
-                };<br>
+                };<br>
+ </br>
+ 
+ 修改布局中listview数据过多无法显示最下边的边框view的bug
+ -----
+ 设置listview的权重  android:layout_weight="1"<br>
+ 便可显示最下边的view<br>
+ 
+ 设置alertdialog的固定宽高
+ -----
+ 代码要写在builder.show()的后边，要dialog显示出来才能编辑它的宽高<br>
+   WindowManager m=getWindowManager();<br>
+   Display d=m.getDefaultDisplay();                                                   //获取屏幕宽高<br>
+   android.view.WindowManager.LayoutParams p=dialog.getWindow().getAttributes();      //获取对话框当前参数值<br>
+   p.height= (int) (d.getHeight()*0.8);                                             //宽度设为屏幕的0.8<br>
+   p.width= (int) (d.getWidth()*0.9);                                               //高度设为屏幕的0.9<br>
+   dialog.getWindow().setAttributes(p);  <br>
